@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ex01 - Calculadora de gorjeta</title>
+  <title>Ex02 - Cadastro de usuário</title>
 </head>
 <style>
 body {
@@ -22,12 +22,14 @@ form {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
+  width: 100%;
   max-width: 500px;
   height: auto;
   padding: 20px 50px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -57,26 +59,29 @@ input[type="submit"] {
 </style>
 
 <body>
-  <h1>Calculo de Gorjeta</h1>
-
-  <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    Total da conta: <input type="text" name="total"><br>
-    Porcentagem da gorjeta: <input type="text" name="percent"><br>
+  <h1>Cadastro de usuários</h1>
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <label for="name">Nome:</label>
+    <input type="text" name="name" id="name"><br>
+    <label for="email">E-mail:</label>
+    <input type="text" name="email" id="email"><br>
+    <label for="password">Senha:</label>
+    <input type="password" name="password" id="password"><br>
     <input type="submit">
   </form>
 
   <?php
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $total = $_POST['total'];
-    $percent = $_POST['percent'];
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && $_SERVER['PHP_SELF']){
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
 
-    $gorjeta = $total * ($percent / 100);
+      echo "<div class='resultado'>";
+      echo "<p>Cadastro realizado com sucesso pro usuário $name</p>";
+      echo "</div>";
+    }
 
-    echo "<div class='resultado'>A gorjeta é de R$ " . number_format($gorjeta, 2, ',', '.') . "</div>";
-    echo "<div class='resultado'>O total da conta com a gorjeta é de R$ " . number_format($total + $gorjeta, 2, ',', '.') . "</div>";
-    echo "<p class='resultado'>Agradecemos a preferência. Volte sempre!</p>";
-  }
-?>
+  ?>
 </body>
 
 </html>
