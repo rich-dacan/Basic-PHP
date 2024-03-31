@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ex02 - Cadastro de usuário</title>
+  <title>Conversor de moedas</title>
 </head>
 <style>
 body {
@@ -22,14 +22,12 @@ form {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  width: 100%;
   max-width: 500px;
   height: auto;
   padding: 20px 50px;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -59,26 +57,22 @@ input[type="submit"] {
 </style>
 
 <body>
-  <h1>Cadastro de usuários</h1>
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <label for="name">Nome:</label>
-    <input type="text" name="name" id="name"><br>
-    <label for="email">E-mail:</label>
-    <input type="text" name="email" id="email"><br>
-    <label for="password">Senha:</label>
-    <input type="password" name="password" id="password"><br>
-    <input type="submit">
+  <h1>Conversor de moedas</h1>
+  <form action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <input type="text" name="value" placeholder="Digite o valor em R$">
+    <input type="submit" value="Converter">
   </form>
 
   <?php
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $convertValue = $_POST['value'];
+    $dolar = 5.41;
+
 
     echo "<div class='resultado'>";
-    echo "<p>Cadastro realizado com sucesso pro usuário $name</p>";
+    echo "<p>R$ " . $convertValue . " reais equivalem a US$ " . number_format($convertValue / $dolar, 2, ',', '.') . " dólares</p>";
     echo "</div>";
   ?>
+
 </body>
 
 </html>
