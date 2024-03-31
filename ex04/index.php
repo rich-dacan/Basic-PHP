@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conversor de moedas</title>
+  <title>Verificador de maioridade</title>
 </head>
+
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -33,10 +34,9 @@ input[type="text"] {
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  text-align: center;
 
-  &::placeholder {
-    text-align: center;
-  }
+  &::placeholder {}
 }
 
 input[type="submit"] {
@@ -66,22 +66,22 @@ input[type="submit"] {
 </style>
 
 <body>
-  <h1>Conversor de moedas</h1>
-  <form action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <input type="text" name="value" placeholder="Digite o valor em R$">
-    <input type="submit" value="Converter">
+  <h1>Verificador de maioridade</h1>
+
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+    <input type="text" name="age" placeholder="Digite sua idade">
+    <input type="submit" value="Verificar">
   </form>
 
   <?php
-    $convertValue = $_POST['value'];
-    $dolar = 5.41;
+    $age = $_POST["age"];
 
-
-    echo "<div class='resultado'>";
-    echo "<p>R$ " . $convertValue . " reais equivalem a US$ " . number_format($convertValue / $dolar, 2, ',', '.') . " dólares</p>";
-    echo "</div>";
+    if ($age >= 18) {
+      echo "<p class='resultado'>Você é maior de idade.</p>";
+    } else {
+      echo "<p class='resultado'>Você é menor de idade.</p>";
+    }
   ?>
-
 </body>
 
 </html>
