@@ -67,7 +67,7 @@ input[type="submit"] {
 
 <body>
   <h1>Conversor de moedas</h1>
-  <form action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="text" name="value" placeholder="Digite o valor em R$">
     <input type="submit" value="Converter">
   </form>
